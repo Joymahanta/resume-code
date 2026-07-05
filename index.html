@@ -9,6 +9,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
         integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .download-btn{
+    background:#003147;
+    color:#fff;
+    border:none;
+    padding:12px 25px;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.download-btn:hover{
+    background:#0d5c7d;
+}
+        @media print{
+    .download-btn{
+        display:none;
+    }
+}
+    </style>
 </head>
 
 <body>
@@ -132,7 +153,7 @@
                 <div class="box">
                     <h4>Post office-</h4>
                     <div class="percent">
-                        <div>Bogra</div>
+                        <div>Bogra, PIN- 723146</div>
                     </div>
                 </div>
                 <div class="box">
@@ -242,8 +263,41 @@
         </div>
         <!-- Right Column Ends -->
     </div>
+<div style="text-align:center; margin:20px;">
+    <button onclick="downloadResume()" class="download-btn">
+        <i class="fa fa-download"></i> Download Resume
+    </button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+<script>
 
+function downloadResume(){
+
+    const element = document.querySelector(".container");
+
+    const opt = {
+        margin:0,
+        filename:"Bishal_Bhagat_Resume.pdf",
+        image:{ type:"jpeg", quality:1 },
+        html2canvas:{
+            scale:2,
+            useCORS:true
+        },
+        jsPDF:{
+            unit:"mm",
+            format:"a4",
+            orientation:"portrait"
+        }
+    };
+
+    html2pdf().set(opt).from(element).save();
+
+}
+
+</script>
+
+    
 </body>
 
 </html>
